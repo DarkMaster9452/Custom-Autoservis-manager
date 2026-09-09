@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stiahnutie &mdash; AutoAgenda</title>
-<meta name="description" content="Potvrdenie objednávky a stiahnutie programu AutoAgenda.">
-<meta property="og:title" content="Stiahnutie &mdash; AutoAgenda">
-<meta property="og:description" content="Potvrdenie objednávky a stiahnutie programu AutoAgenda.">
+<title>Obnovenie licencie — AutoAgenda</title>
+<meta name="description" content="Obnovenie zastavenej licencie programu AutoAgenda. Po zaplatení sa licencia predĺži a dáta zostávajú.">
+<meta property="og:title" content="Obnovenie licencie — AutoAgenda">
+<meta property="og:description" content="Obnovenie zastavenej licencie programu AutoAgenda. Po zaplatení sa licencia predĺži a dáta zostávajú.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sk_SK">
 <meta name="theme-color" content="#101722">
@@ -48,53 +48,58 @@
 
 <section class="phead">
   <div class="wrap wrap--nar">
-    <h1 id="hlava">Overujem objednávku</h1>
-    <p class="lead" id="podnadpis">Chvíľu to potrvá, stránku zatiaľ nezatvárajte.</p>
+    <h1>Obnovenie licencie</h1>
+    <p class="lead">Zaplatením sa tá istá licencia predĺži. Kód sa nemení, program sa odomkne a zákazky, sklad ani nastavenia sa nikam nestratia.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap wrap--mid">
-    <div class="kod" id="licencia" hidden>
-      <span class="kod__lbl">Licenčný kód</span>
+    <p class="oznam" id="oznam" hidden></p>
+
+    <div class="kod" id="licencia">
+      <span class="kod__lbl">Licencia na obnovenie</span>
       <b class="kod__val" id="kodhodnota">&mdash;</b>
-      <button class="btn btn--gh btn--sm" type="button" id="kopiruj" hidden>Kopírovať</button>
-      <span class="kod__note" id="kodpozn"></span>
+      <span class="kod__note" id="kodpozn">Kód si stránka prečíta z odkazu, ktorý ukázal program. Ak je prázdny, otvorte odkaz znova z programu alebo mi napíšte.</span>
     </div>
 
-    <div class="dl" id="stiahnutie" hidden>
-      <div class="dl__l">
-        <span class="dl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg></span>
-        <div>
-          <b><span data-file>Inštalačný súbor</span></b>
-          <span><span data-rel-off>Posledná vydaná verzia</span><span data-rel hidden>Verzia <span data-tag></span><span data-size-wrap> &middot; <span data-size></span></span></span> &middot; Windows 10 a 11, 64-bit</span>
+    <div class="plans">
+      <article class="plan plan--best">
+        <div class="plan__head">
+          <h2>Ročne</h2>
+          <span class="plan__badge">Ušetríte 39,89 €</span>
         </div>
-      </div>
-      <a class="btn btn--pri btn--lg" id="odkaz" href="#">Stiahnuť</a>
+        <p class="plan__price"><b>199,99 €</b><span>/ rok</span></p>
+        <p class="plan__per">Obnoví licenciu na ďalších dvanásť mesiacov a ďalej sa obnovuje sama.</p>
+        <form class="pay" method="post" action="/api/obnova">
+          <input type="hidden" name="kod" value="" data-kod>
+          <input type="hidden" name="plan" value="rok">
+          <button class="btn btn--pri btn--lg btn--full" type="submit">Obnoviť na rok</button>
+        </form>
+      </article>
+      <article class="plan">
+        <div class="plan__head">
+          <h2>Mesačne</h2>
+          <span class="plan__badge plan__badge--mut">Zrušíte kedykoľvek</span>
+        </div>
+        <p class="plan__price"><b>19,99 €</b><span>/ mesiac</span></p>
+        <p class="plan__per">Obnoví licenciu na jeden mesiac a ďalej sa obnovuje sama.</p>
+        <form class="pay" method="post" action="/api/obnova">
+          <input type="hidden" name="kod" value="" data-kod>
+          <input type="hidden" name="plan" value="mesiac">
+          <button class="btn btn--gh btn--lg btn--full" type="submit">Obnoviť na mesiac</button>
+        </form>
+      </article>
     </div>
 
-    <p class="fine center" id="poznamka" hidden></p>
-
-    <div class="box box--big" id="problem" hidden>
-      <h3>Objednávku sa nepodarilo overiť</h3>
-      <p id="problemtext">Skúste stránku obnoviť. Ak ste práve zaplatili a stále to nejde, napíšte mi a stiahnutie sprístupním ručne.</p>
-      <p class="mailrow"><a class="btn btn--pri" data-mail="podpora">Napísať e-mail</a>
-      <a class="btn btn--gh" href="cennik.html">Späť do cenníka</a></p>
-    </div>
-
-    <div class="warn" id="varovanie" hidden>
-      <h3>Windows bude hlásiť, že súbor nie je bezpečný</h3>
-      <p>Inštalačka nemá zakúpený podpisový certifikát, preto ju SmartScreen označí ako súbor od neznámeho vydavateľa. Nie je to vírus. Po kliknutí na <b>Ďalšie informácie</b> a <b>Spustiť tak či tak</b> inštalácia normálne pokračuje.</p>
-    </div>
-
-    <div class="two two--top" id="dalej" hidden>
+    <div class="two two--top">
       <div class="box">
-        <h3>Odkaz si odložte</h3>
-        <p>Táto stránka funguje aj neskôr, kým máte v adrese číslo objednávky. Odložte si ju do záložiek, keby ste inštalačku potrebovali stiahnuť znova.</p>
+        <h3>O dáta neprídete</h3>
+        <p>Zákazky, zákazníci aj sklad sú v databáze na vašom počítači. Kým je licencia zastavená, program ich nezahodí — po zaplatení sa všetko otvorí tam, kde ste skončili. Aj v zastavenom stave si viete dáta vyexportovať.</p>
       </div>
       <div class="box">
         <h3>Niečo nesedí?</h3>
-        <p>Napíšte mi na e-mail v <a href="kontakt.html">kontakte</a> a pošlite číslo objednávky z adresy tejto stránky. Ozvem sa hneď, ako to bude možné.</p>
+        <p>Ak vám platba neprešla alebo potrebujete licenciu preložiť na iný počítač, napíšte mi na <a data-mail-txt href="#">&nbsp;</a> a dohodneme sa.</p>
       </div>
     </div>
   </div>
