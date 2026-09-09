@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demo AutoAgenda pre Windows</title>
-<meta name="description" content="Demo programu AutoAgenda na vyskúšanie zadarmo, systémové požiadavky a postup inštalácie. Plná verzia sa sťahuje po zaplatení predplatného.">
-<meta property="og:title" content="Demo AutoAgenda pre Windows">
-<meta property="og:description" content="Demo programu AutoAgenda na vyskúšanie zadarmo, systémové požiadavky a postup inštalácie. Plná verzia sa sťahuje po zaplatení predplatného.">
+<title>Stiahnutie &mdash; AutoAgenda</title>
+<meta name="description" content="Potvrdenie objednávky a stiahnutie programu AutoAgenda.">
+<meta property="og:title" content="Stiahnutie &mdash; AutoAgenda">
+<meta property="og:description" content="Potvrdenie objednávky a stiahnutie programu AutoAgenda.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sk_SK">
 <meta name="theme-color" content="#101722">
@@ -27,7 +27,7 @@
       <a href="index.html">Domov</a>
       <a href="funkcie.html">Funkcie</a>
       <a href="cennik.html">Cenník</a>
-      <a href="stiahnut.html" class="on">Demo</a>
+      <a href="stiahnut.html">Demo</a>
       <a href="faq.html">FAQ</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
@@ -38,7 +38,7 @@
     <a href="index.html">Domov</a>
     <a href="funkcie.html">Funkcie</a>
     <a href="cennik.html">Cenník</a>
-    <a href="stiahnut.html" class="on">Demo</a>
+    <a href="stiahnut.html">Demo</a>
     <a href="faq.html">FAQ</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
@@ -47,78 +47,48 @@
 <main id="obsah">
 
 <section class="phead">
-  <div class="wrap">
-    <h1>Demo na vyskúšanie</h1>
-    <p class="lead">Demo nič nestojí, sťahuje sa však cez objednávku za 0 €: v pokladni zadáte e-mail, kartu Stripe nepýta. Plnú verziu programu sprístupní predplatné.</p>
+  <div class="wrap wrap--nar">
+    <h1 id="hlava">Overujem objednávku</h1>
+    <p class="lead" id="podnadpis">Chvíľu to potrvá, stránku zatiaľ nezatvárajte.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap wrap--mid">
-    <p class="oznam" id="oznam" hidden></p>
-    <div class="dl">
+    <div class="dl" id="stiahnutie" hidden>
       <div class="dl__l">
         <span class="dl__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg></span>
         <div>
-          <b><span data-file>Inštalačný súbor</span> &mdash; demo</b>
-          <span><span data-rel-off>Posledná vydaná verzia</span><span data-rel hidden>Verzia <span data-tag></span><span data-size-wrap> &middot; <span data-size></span></span><span data-date-wrap> &middot; vydané <span data-date></span></span></span> &middot; Windows 10 a 11, 64-bit</span>
+          <b><span data-file>Inštalačný súbor</span></b>
+          <span><span data-rel-off>Posledná vydaná verzia</span><span data-rel hidden>Verzia <span data-tag></span><span data-size-wrap> &middot; <span data-size></span></span></span> &middot; Windows 10 a 11, 64-bit</span>
         </div>
       </div>
-      <form class="pay" method="post" action="/api/checkout">
-  <input type="hidden" name="plan" value="demo">
-  <button class="btn btn--pri btn--lg" type="submit">Získať demo zadarmo</button>
-</form>
+      <a class="btn btn--pri btn--lg" id="odkaz" href="#">Stiahnuť</a>
     </div>
-    <p class="fine center">Tlačidlo otvorí pokladňu Stripe. Za demo sa neplatí, suma je 0 € a karta sa nezadáva &mdash; potrebný je len e-mail. Po potvrdení objednávky sa hneď dostanete na stiahnutie poslednej vydanej verzie. Plnú verziu sprístupní predplatné, <a href="cennik.html">pozrieť cenník</a>.</p>
 
-    <div class="warn">
+    <p class="fine center" id="poznamka" hidden></p>
+
+    <div class="box box--big" id="problem" hidden>
+      <h3>Objednávku sa nepodarilo overiť</h3>
+      <p id="problemtext">Skúste stránku obnoviť. Ak ste práve zaplatili a stále to nejde, napíšte mi a stiahnutie sprístupním ručne.</p>
+      <p class="mailrow"><a class="btn btn--pri" data-mail="podpora">Napísať e-mail</a>
+      <a class="btn btn--gh" href="cennik.html">Späť do cenníka</a></p>
+    </div>
+
+    <div class="warn" id="varovanie" hidden>
       <h3>Windows bude hlásiť, že súbor nie je bezpečný</h3>
-      <p>Inštalačka nemá zakúpený podpisový certifikát, preto ju SmartScreen označí ako súbor od neznámeho vydavateľa, ktorý môže poškodiť počítač. Nie je to vírus, súbor sťahujete priamo z tejto stránky. Po kliknutí na <b>Ďalšie informácie</b> a <b>Spustiť tak či tak</b> inštalácia normálne pokračuje. Rovnaké hlásenie uvidíte aj pri plnej verzii po zaplatení predplatného.</p>
+      <p>Inštalačka nemá zakúpený podpisový certifikát, preto ju SmartScreen označí ako súbor od neznámeho vydavateľa. Nie je to vírus. Po kliknutí na <b>Ďalšie informácie</b> a <b>Spustiť tak či tak</b> inštalácia normálne pokračuje.</p>
     </div>
 
-    <div class="two two--top">
+    <div class="two two--top" id="dalej" hidden>
       <div class="box">
-        <h3>Systémové požiadavky</h3>
-        <dl class="specs">
-          <div><dt>Systém</dt><dd>Windows 10 alebo 11, 64-bit</dd></div>
-          <div><dt>Pamäť</dt><dd>4 GB RAM a viac</dd></div>
-          <div><dt>Disk</dt><dd>približne 300 MB</dd></div>
-          <div><dt>Rozlíšenie</dt><dd>1366 &times; 768 a viac</dd></div>
-          <div><dt>Internet</dt><dd>len na stiahnutie a aktualizácie</dd></div>
-        </dl>
+        <h3>Odkaz si odložte</h3>
+        <p>Táto stránka funguje aj neskôr, kým máte v adrese číslo objednávky. Odložte si ju do záložiek, keby ste inštalačku potrebovali stiahnuť znova.</p>
       </div>
       <div class="box">
-        <h3>Inštalácia krok za krokom</h3>
-        <ol class="ol">
-          <li>Stiahnite inštalačku a spustite ju.</li>
-          <li>Keď Windows zobrazí modré okno SmartScreen, kliknite na <b>Ďalšie informácie</b> a potom na <b>Spustiť tak či tak</b>.</li>
-          <li>Potvrďte inštaláciu a počkajte, kým sa program nainštaluje.</li>
-          <li>Spustite program a v Nastaveniach vyplňte údaje dielne a hodinovú sadzbu.</li>
-          <li>Založte prvú zákazku tlačidlom Nová zákazka.</li>
-        </ol>
+        <h3>Niečo nesedí?</h3>
+        <p>Napíšte mi na e-mail v <a href="kontakt.html">kontakte</a> a pošlite číslo objednávky z adresy tejto stránky. Ozvem sa hneď, ako to bude možné.</p>
       </div>
-    </div>
-
-    <div class="two two--top">
-      <div class="box">
-        <h3>Prechod z dema na plnú verziu</h3>
-        <p>Po zaplatení predplatného dostanete e-mailom odkaz na plnú verziu a licenčný kľúč. Inštalačku spustíte cez demo, zákazky zapísané v deme zostanú zachované a kľúč potom vložíte v Nastaveniach.</p>
-      </div>
-      <div class="box">
-        <h3>Zálohovanie dát</h3>
-        <p>Dáta sú v databáze na vašom počítači, nie v cloude. Odporúčam kopírovať ju raz za čas na USB kľúč alebo do cloudového disku, rovnako ako zálohujete účtovníctvo.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="wrap cta__in">
-    <h2>Demo vám sadlo?</h2>
-    <p>Predplatné vybavíte v cenníku. Ak sa niečo zaseklo pri inštalácii, napíšte mi, čo hlási počítač.</p>
-    <div class="row row--c">
-      <a class="btn btn--pri btn--lg" href="cennik.html">Predplatiť</a>
-      <a class="btn btn--gh btn--lg btn--onDark" href="kontakt.html">Napísať</a>
     </div>
   </div>
 </section>
